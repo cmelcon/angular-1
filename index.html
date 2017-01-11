@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="myApp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+    <script type="text/javascript">
+        var myApp = angular.module('myApp', []);
+        myApp.controller('dataController', ['$scope', '$http', function(scope, http) {
+            http.get('https://jsonplaceholder.typicode.com/posts').success(function(data) {
+                scope.descriptions = data;
+            });
+        }]);
+    </script>
+    <title>Angular 1</title>
+</head>
+
+<body ng-controller="dataController">
+    <div class="" ng-repeat="x in descriptions">
+        <h1>Title: {{x.title}}</h1>
+        <p>
+            {{x.body}}
+        </p>
+    </div>
+</body>
+
+</html>
